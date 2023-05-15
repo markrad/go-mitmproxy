@@ -140,7 +140,7 @@ func (connCtx *ConnContext) initHttpServerConn() {
 			TLSClientConfig: &tls.Config{
 				InsecureSkipVerify: connCtx.proxy.Opts.SslInsecure,
 				KeyLogWriter:       getTlsKeyLogWriter(),
-				Renegotiation:      tls.RenegotiateOnceAsClient,
+				Renegotiation:      tls.RenegotiateNever,
 			},
 		},
 		CheckRedirect: func(req *http.Request, via []*http.Request) error {

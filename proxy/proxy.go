@@ -51,6 +51,7 @@ func NewProxy(opts *Options) (*Proxy, error) {
 			TLSClientConfig: &tls.Config{
 				InsecureSkipVerify: opts.SslInsecure,
 				KeyLogWriter:       getTlsKeyLogWriter(),
+				Renegotiation:      tls.RenegotiateOnceAsClient,
 			},
 		},
 		CheckRedirect: func(req *http.Request, via []*http.Request) error {

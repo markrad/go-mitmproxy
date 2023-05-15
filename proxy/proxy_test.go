@@ -107,7 +107,7 @@ func (helper *testProxyHelper) init(t *testing.T) {
 			Transport: &http.Transport{
 				TLSClientConfig: &tls.Config{
 					InsecureSkipVerify: true,
-					Renegotiation:      tls.RenegotiateOnceAsClient,
+					Renegotiation:      tls.RenegotiateNever,
 				},
 				Proxy: func(r *http.Request) (*url.URL, error) {
 					return url.Parse("http://127.0.0.1" + helper.proxyAddr)
@@ -286,7 +286,7 @@ func TestProxy(t *testing.T) {
 				Transport: &http.Transport{
 					TLSClientConfig: &tls.Config{
 						InsecureSkipVerify: true,
-						Renegotiation:      tls.RenegotiateOnceAsClient,
+						Renegotiation:      tls.RenegotiateNever,
 					},
 				},
 			}
